@@ -76,7 +76,7 @@ After sometime, the other process can send its own `FIN` to finally indicate it'
 
 ![](tcp_4_way_handshake.png)
 
-**Berkeley / BSD**
+### **Berkeley / BSD**
 
 The Berkeley sockets are a set of APIs defined for network communication, this set of APIs have become the de facto standard for socket based networking.
 
