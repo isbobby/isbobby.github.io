@@ -8,7 +8,6 @@ References:
 - [Microchip's introduction to TCP/IP](https://developerhelp.microchip.com/xwiki/bin/view/applications/tcp-ip/sockets-ports/)
 - [TCP Guide](http://www.tcpipguide.com/free/t_TCPConnectionTermination-2.htm)
 - [Free BSD Guide](https://man.freebsd.org/cgi/man.cgi?query=listen&sektion=2&format=html)
-
 # Key Concepts
 Ports and sockets are important concepts to TCP connection management.
 ## Ports
@@ -28,7 +27,7 @@ Image Credit : [Microchip](https://developerhelp.microchip.com/xwiki/bin/view/ap
 
 Internally, sockets implement receive and transmit buffers - **TX** & **RX** buffers. When an application wants to transmit a packet, its process writes the packet to the socket's **TX** buffer. Similarly, data is read from the **RX** buffer.
 
-### **Socket Operation**
+## **Socket Operations**
 Application needs to manage the life cycle of a socket. For TCP, the following step applies
 1. server creates a socket, checks for incoming messages
 2. client creates a socket connecting to the server, server assigns new socket for this connection
@@ -37,8 +36,7 @@ Application needs to manage the life cycle of a socket. For TCP, the following s
 
 Sockets are also embedded with states, these states allow processes to perform the right system calls to transit from one state to the next.
 
-**1 - Server Socket Creation**
-
+### **1 - Server socket creation**
 A server needs to create socket to receive incoming connections from client, via the following steps
 1. creating the socket, with `sockfd = socket()`, getting the file descriptor of the socket. The state of the socket now is `CLOSED`
 2. set the option of the socket, with `setsockopt`
@@ -48,7 +46,7 @@ A server needs to create socket to receive incoming connections from client, via
 
 After `listen()`, this socket is a passive socket, which may not initiate connection. It also has a queue to hold pending connections.
 
-**2 - Client Socket Creation & TCP Connection**
+### **2 - Client socket creation & establishing TCP connection**
 
 A client should be aware of the destination address and port. Before sending data to the server, it needs to create a socket with the destination address, with
 1. creating a new socket, same as server, with `sockfd = socket()`, the state of the client socket now is `CLOSED`
@@ -56,20 +54,17 @@ A client should be aware of the destination address and port. Before sending dat
 
 When `connect()` is called, the kernel performs TCP three way handshake, sockets on both server and client begin transiting through different states.
 
-**`SYN`**
-At this stage, the client socket transitions from `CLOSED` to the `SYNC_SENT` stage, and after the server receives the `SYN` successfully, it allocates a new socket, and transitions the new socket to the `SYN_RCVD` state.
+**`SYN`**: At this stage, the client socket transitions from `CLOSED` to the `SYNC_SENT` stage, and after the server receives the `SYN` successfully, it allocates a new socket, and transitions the new socket to the `SYN_RCVD` state.
 
-**`SYN-ACK`**
-Next, the server writes the `SYN-ACK` packet to the socket, the client waits for this packet and upon receiving, transitions to the `ESTABLISHED` state and respond to the server with the final `ACK`.
+**`SYN-ACK`**: Next, the server writes the `SYN-ACK` packet to the socket, the client waits for this packet and upon receiving, transitions to the `ESTABLISHED` state and respond to the server with the final `ACK`.
 
-**`ACK`**
-Lastly, upon receiving the `ACK`, the server also transitions to the `ESTABLISHED` state. Both the server and client sockets are fully established.
+**`ACK`**: Lastly, upon receiving the `ACK`, the server also transitions to the `ESTABLISHED` state. Both the server and client sockets are fully established.
 
-**3 - Data transmission via socket buffers**
+### **3 - Data transmission via socket buffers**
 
 After both sockets are created, client can attempt delivery. The process will write data to the **TX** buffer of its socket, with `write(fd, buffer, buffer_size)`, and read using `read()`.
 
-**4 - Terminating connection**
+### **4 - Terminating connection**
 
 Only client process can establish a connection with the first `SYN` packet, but either client or server can initialise connection termination with the first `FIN` packet.
 
