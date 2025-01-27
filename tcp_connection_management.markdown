@@ -1,7 +1,7 @@
 ---
-layout: default
 title: TCP Connection Management
-permalink: /tcp-connection-mgmt/
+parent: Fundamentals
+nav_order: 2
 ---
 # TCP Connection Management
 References:
