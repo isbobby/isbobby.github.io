@@ -8,8 +8,10 @@ References:
 - [Microchip's introduction to TCP/IP](https://developerhelp.microchip.com/xwiki/bin/view/applications/tcp-ip/sockets-ports/)
 - [TCP Guide](http://www.tcpipguide.com/free/t_TCPConnectionTermination-2.htm)
 - [Free BSD Guide](https://man.freebsd.org/cgi/man.cgi?query=listen&sektion=2&format=html)
+
 # Key Concepts
 Ports and sockets are important concepts to TCP connection management.
+
 ## Ports
 These integer ports are used to identify the application Layer processes running on the host.
 
