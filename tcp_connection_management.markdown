@@ -1,6 +1,6 @@
 ---
 layout: default
-title: tcp-connection-mgmt
+title: TCP Connection Management
 permalink: /tcp-connection-mgmt/
 ---
 # TCP Connection Management
