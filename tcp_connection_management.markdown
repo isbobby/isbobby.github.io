@@ -1,3 +1,8 @@
+---
+layout: default
+title: tcp-connection-mgmt
+permalink: /tcp-connection-mgmt/
+---
 # TCP Connection Management
 References:
 - [Microchip's introduction to TCP/IP](https://developerhelp.microchip.com/xwiki/bin/view/applications/tcp-ip/sockets-ports/)
