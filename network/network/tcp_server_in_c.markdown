@@ -1,10 +1,10 @@
 ---
-title: TCP Connection Management
+title: TCP Server in C
 parent: Computer Network
 nav_order: 2
 ---
 # Outline
-The basic TCP server program should do the following
+The basic TCP server program should do the following, code is pushed [here](https://github.com/isbobby/sockets-programming/blob/main/c/server.c).
 
 1. create a TCP socket
 2. optinally configure the socket 
