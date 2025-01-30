@@ -1,6 +1,6 @@
 ---
-title: Fundamentals
+title: Computer Network
 nav_order: 2
 ---
 
-# CS Fundamentals
+# Computer Network

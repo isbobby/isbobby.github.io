@@ -1,6 +1,6 @@
 ---
 title: TCP Connection Management
-parent: Fundamentals
+parent: Computer Network
 nav_order: 1
 ---
 # TCP Connection Management
