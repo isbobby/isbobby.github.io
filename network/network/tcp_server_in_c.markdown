@@ -94,12 +94,13 @@ We can use `accept()` to take the first pending connection from the queue of the
 int accept(int sockfd, struct sockaddr *_Nullable restrict addr, socklen_t *_Nullable restrict addrlen);
 ```
 
-Since everything in linux is a file, we can use the `read()` to retrieve the data into a buffer, and print out the result.
+Since everything in linux is a file, we can use the `read()` to retrieve the data into a buffer, and print out the result. After reading, we need to close the client socket with `close(clientfd)`
 
 ```c
 char buffer[BUFFER_SIZE];
 ssize_t data_len = read(clientfd, buffer, BUFFER_SIZE);
 log_with_time("received data (%d):[%sb]", data_len, buffer);
+close(clientfd);
 ```
 
 We can send a small packet with `nc 127.0.0.1:8080 < data`, and the complete program output is the following
