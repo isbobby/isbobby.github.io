@@ -1,3 +1,8 @@
+---
+title: Introduction to Processes 
+parent: Operating System
+nav_order: 1
+---
 # Processes
 Reference: [OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)
 
