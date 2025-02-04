@@ -4,7 +4,7 @@ parent: Operating System
 nav_order: 1
 ---
 # Processes
-Reference: [OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/)
+Reference: [OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/), [Github](https://github.com/remzi-arpacidusseau/ostep-homework)
 
 Processes is one of the most fundamental **abstraction** that OS provides to users. Formally, a process is just defined as a **running program**.
 
@@ -33,11 +33,14 @@ The OS has to load process code and any related static data into the process's a
 In earlier OS, this is done eagerly, where the entirety of the process is loaded into the memory at once. In modern OS, only the critical bits are loaded in. The modern lazy loading is enabled by [[Paging and Swapping]].
 
 Once the code and static data are loaded, some additional memory must be allocated for the program's **run-time stack** and **heap**. The OS may also do I/O initialisation tasks. On UNIX systems, each process by default has three opened file descriptors, for standard input, output, and error.
+
 ## Process States
 In a simplified view, the process states can be distilled into three different states
 1. running - a process is running on a processor, its instructions are being executed
 2. ready - process is ready to run but OS has chosen not to run it
 3. blocked - the process has performed some kind of operation that renders it not ready to run until other event takes place
+
+
 ## Data Structures
 Like any other programs, the OS utilises some key data structure to track and manage the processes. The following is a snippet of data structure to track process, the data structure in actual OS will be much more complex
 
