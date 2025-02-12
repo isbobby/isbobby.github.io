@@ -61,6 +61,3 @@ struct proc {
 	struct trapframe *tf;
 }
 ```
-
-## Guided Exercise
-(WIP)

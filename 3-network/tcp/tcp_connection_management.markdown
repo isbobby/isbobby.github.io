@@ -89,4 +89,4 @@ Some key functions include
 `select() / poll()` - monitors multiple sockets to see if they are ready for reading
 
 # Implementations
-[(WIP) Implement TCP client and server in C](https://github.com/isbobby/sockets-programming/tree/main/c)
+[Basic TCP client and server in C](https://github.com/isbobby/sockets-programming/tree/main/c)
