@@ -1,5 +1,5 @@
 ---
-title: "One Dimensional" DP Problems
+title: One Dimensional DP
 parent: Dynamic Programming
 nav_order: 1
 ---

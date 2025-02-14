@@ -1,5 +1,5 @@
 ---
-title: "Multi Dimensional" DP Problems
+title: Multi Dimensional DP
 parent: Dynamic Programming
 nav_order: 3
 ---

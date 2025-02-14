@@ -1,5 +1,5 @@
 ---
-title: "Decision Tree" DP Problems
+title: Decision Tree DP
 parent: Dynamic Programming
 nav_order: 2
 ---
