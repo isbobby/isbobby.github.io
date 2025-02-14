@@ -6,33 +6,33 @@ nav_order: 1
 # Processes
 Reference: [OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/), [Github](https://github.com/remzi-arpacidusseau/ostep-homework)
 
-Processes is one of the most fundamental **abstraction** that OS provides to users. Formally, a process is just defined as a **running program**.
+Processes is one of the most fundamental abstraction OS provides. A process is defined as a **running program**.
 
-We often need to run **multiple programs**, and processes aims to provide *the illusion* of many CPIs. This is done by **virtualising** the CPU, by running one process, the stopping it and running another, and so forth. This basic technique is known as **time sharing** of the CPU.
+We often need to run **multiple programs**, and processes aim to provide the illusion of many CPUs by running one process, the stopping it and running another, and so forth. This basic technique is known as time sharing.
 
-The counter part of this **time sharing** is **space sharing**, where a resource is divided in space. For example, disk and storage is naturally. a space shared resource.
+The counter part of this time sharing is space sharing where a resource is divided in space. For example, disk and storage is naturally a space shared resource.
 
 ## Constituents of a process
-One obvious component that comprises a process is its **memory**. The process's instructions lie in the memory, the data the program reads and writes lie in memory as well.
+One main component a process relies on is its memory. The process's instructions, the data the program reads and writes all reside in the memory.
 
-Another part of a process's machine state are **registers**, many instructions explicitly read or update registers. Some special registers are the **program counter** to track the next instruction to execute, and **stack pointer** and associated **frame pointer** to manage stack for function parameters.
+Another component are the registers. Many instructions explicitly read or update registers. Some special registers are the **program counter** to track the next instruction to execute, and **stack pointer** and associated **frame pointer** to manage stack for function parameters.
 
 Finally, programs often access persistent **storage devices**, these devices likely present themselves as file descriptors.
 
 ## Process APIs
 On a high level, the OS should provide these APIs in its interface for managing processes
-1. **create**
+1. **create** (see [`fork`](https://isbobby.github.io/2-os/1-processes/process_api_fork.html))
 2. **destroy**
-3. **wait** - wait for a process to stop running
+3. **wait** - wait for a process to stop running, see ([`wait`]())
 4. **misc control** - for example, suspend and resume
 5. **status** - to retrieve status information about a process
 
 **More on process creation**
 The OS has to load process code and any related static data into the process's address space in the memory. Programs initially reside on **disk** or other persistent storages, in some kind of executable format.
 
-In earlier OS, this is done eagerly, where the entirety of the process is loaded into the memory at once. In modern OS, only the critical bits are loaded in. The modern lazy loading is enabled by [[Paging and Swapping]].
+In earlier OS, this was done eagerly, where the entirety of the process is loaded into the memory all at once. In modern OS, only the critical bits are loaded in. The modern lazy loading is enabled by paging and swapping.
 
-Once the code and static data are loaded, some additional memory must be allocated for the program's **run-time stack** and **heap**. The OS may also do I/O initialisation tasks. On UNIX systems, each process by default has three opened file descriptors, for standard input, output, and error.
+Once the code and static data are loaded, some additional memory must be allocated for the program's run-time stack and heap. The OS may also do I/O initialisation tasks. On UNIX systems, each process by default has three opened file descriptors, for standard input, output, and error.
 
 ## Process States
 In a simplified view, the process states can be distilled into three different states
