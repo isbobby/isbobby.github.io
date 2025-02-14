@@ -21,9 +21,9 @@ Finally, programs often access persistent **storage devices**, these devices lik
 
 ## Process APIs
 On a high level, the OS should provide these APIs in its interface for managing processes
-1. **create** (see [`fork`](https://isbobby.github.io/2-os/1-processes/process_api_fork.html))
+1. **create** (see [`fork`](https://isbobby.github.io/2-os/1-processes/apis/process_api_fork.html))
 2. **destroy**
-3. **wait** - wait for a process to stop running, see ([`wait`]())
+3. **wait** - wait for a process to stop running, see ([`wait`](https://isbobby.github.io/2-os/1-processes/apis/process_api_wait.html))
 4. **misc control** - for example, suspend and resume
 5. **status** - to retrieve status information about a process
 
