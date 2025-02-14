@@ -3,8 +3,7 @@ title: "One Dimensional" DP Problems
 parent: Dynamic Programming
 nav_order: 1
 ---
-# 1D DP
-
+# "One Dimensional" DP Problems
 
 ### Longest Increasing Subsequence ([Link](https://leetcode.com/problems/longest-increasing-subsequence/))
 
