@@ -14,11 +14,11 @@ Given two integer arrays, find the maximum number of *non-intersecting lines* be
 ```
 
 ## Optimal Substructure
-Given two arrays $l_1, l_2$, which have lengths $m,n$. The optimal solution for the max connection can be defined as $dp(S_1(l_11,l_12...l_1m), S_2(l_21,l_22...l_2n)) = dp(l_1,l_2)$, where we consider the entire $l_1$ and $l_2$.
+Given two arrays $$l_1, l_2$$, which have lengths $$m,n$$. The optimal solution for the max connection can be defined as $$dp(S_1(l_11,l_12...l_1m), S_2(l_21,l_22...l_2n)) = dp(l_1,l_2)$$, where we consider the entire $$l_1$$ and $$l_2$$.
 
-We observe that if $l_{11} = l_{21}$, then the optimal solution can be represented as 
+We observe that if $$l_{11} = l_{21}$$, then the optimal solution can be represented as 
 $$1 + dp(S_1(l_12...l_1m), S_2(l_22...l_2n))$$
-If $l_{11} \neq l_{21}$, then we can choose $l_{12}$, or $l_{22}$ as the next element, the optimal solution can then be represented as
+If $$l_{11} \neq l_{21}$$, then we can choose $$l_{12}$$, or $$l_{22}$$ as the next element, the optimal solution can then be represented as
 $$
 \begin{aligned}
 dp(l_1, l_2) & = max(\\
