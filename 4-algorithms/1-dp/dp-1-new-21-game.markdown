@@ -1,19 +1,17 @@
 ---
-title: Decision Tree DP
+title: New 21 Game - Tree & Sliding Window
 parent: Dynamic Programming
-nav_order: 2
+nav_order: 1
 ---
-# Decision Tree DP Problems
-
-## New 21 Game ([Link](https://leetcode.com/problems/new-21-game/))
+# New 21 Game ([Link](https://leetcode.com/problems/new-21-game/))
 **Topics**: probability, tree, DFS, sliding window
-#### Description
+## Description
 We start with 0 points and draws numbers while we have less than $k$ points. During each draw, we gain an integer number of points randomly from the range $(1, max)$, where $max$ is an integer.
 
 Each draw is independent and the outcomes have equal probabilities. We stop drawing numbers once we get $k$ or more points. We need to calculate the probability of getting less than $n$ points.
 
 ![](./new_21_game_prob.png)
-#### Base Recursive Solution
+## Base Recursive Solution
 Our solution is bounded by $k$, once the current score exceeds $k$, we will not take additional cards. If the current score is less or equal to $n$, we will return $1$, else, we will return 0.
 ```go
 if curr >= k {
@@ -38,10 +36,10 @@ return childProbSum
 
 ![](./new_21_game_base_case.png)
 
-#### Optimal Substructure
+## Optimal Substructure
 Each node in the tree represents the probability of getting a *good score* that's larger or equal $k$ and smaller or equal $n$. The global solution can be found by summing the result of all sub-trees.
 
-#### Overlapping Subproblem
+## Overlapping Subproblem
 As we explore different nodes in the recursion tree, we will definitely encounter nodes sharing the same value. For example, the two highlighted subtrees have identical structure.
 
 ![](new_21_game_overlap.png)
@@ -81,3 +79,6 @@ func new21Game(n int, k int, maxPts int) float64 {
 	return dfs(0)
 }
 ```
+
+## Sliding Window Improvement
+(WIP)
