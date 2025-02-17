@@ -92,30 +92,24 @@ In the above DFS solution, the probability of a score is the sum of the child pr
 ```go
 func new21GameSW(n int, k int, maxPts int) float64 {
 	probs := make([]float64, k+maxPts)
-
 	// fixed window of maxPts
 	var curr int
 	prob := 0.0
 	for i := range maxPts {
 		curr = len(probs) - i - 1
-		if curr >= k {
-			if curr <= n {
-				probs[curr] = 1
-				prob += 1
-			} else {
-				probs[curr] = 0
-			}
+		if curr <= n {
+			probs[curr] = 1
+			prob += 1
 		} else {
-			break
+			probs[curr] = 0
 		}
 	}
 	curr -= 1
 
 	nextProb := prob / float64(maxPts)
 	for curr >= 0 {
-		probs[curr] = float64(nextProb)
-		prob -= probs[curr+maxPts]
-		prob += probs[curr]
+		probs[curr] = nextProb
+		prob = prob - probs[curr+maxPts] + probs[curr]
 		nextProb = prob / float64(maxPts)
 		curr -= 1
 	}
