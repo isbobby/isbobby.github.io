@@ -3,7 +3,7 @@ title: Uncrossed Lines
 parent: Dynamic Programming
 nav_order: 2
 ---
-# New 21 Game ([Link](https://leetcode.com/problems/new-21-game/))
+# Uncrossed Lines ([Link](https://leetcode.com/problems/uncrossed-lines/))
 **Topics**: tree, DFS, DP
 ## Description
 Given two integer arrays, find the maximum number of *non-intersecting lines* between these arrays. We can connect **two same elements** with a line. For example, the following will have 3 lines. We cannot connect `4-4` because it will block `2-2` connections.

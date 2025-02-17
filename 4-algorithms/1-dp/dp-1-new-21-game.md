@@ -81,4 +81,45 @@ func new21Game(n int, k int, maxPts int) float64 {
 ```
 
 ## Sliding Window Improvement
-(WIP)
+![](new_21_sliding_window.png)
+
+The DFS solution starts the search from `0`, this results in multiple visits to the same score despite memoization (we only return early, but still visit the node).
+
+Instead, the solution can be further optimised with a sliding window, where we populate the base cases first: score that are larger or equal `k`. We can populate these score first because they have no children, because we cannot draw if the score is larger or equal `k`.
+
+In the above DFS solution, the probability of a score is the sum of the child probability divided by `max`, this logic can be done by summing the window and dividing the sum, then assigning to the score (shown in red boxes). This greatly reduces the time complexity down to just $$O(k+max)$$.
+
+```go
+func new21GameSW(n int, k int, maxPts int) float64 {
+	probs := make([]float64, k+maxPts)
+
+	// fixed window of maxPts
+	var curr int
+	prob := 0.0
+	for i := range maxPts {
+		curr = len(probs) - i - 1
+		if curr >= k {
+			if curr <= n {
+				probs[curr] = 1
+				prob += 1
+			} else {
+				probs[curr] = 0
+			}
+		} else {
+			break
+		}
+	}
+	curr -= 1
+
+	nextProb := prob / float64(maxPts)
+	for curr >= 0 {
+		probs[curr] = float64(nextProb)
+		prob -= probs[curr+maxPts]
+		prob += probs[curr]
+		nextProb = prob / float64(maxPts)
+		curr -= 1
+	}
+
+	return probs[0]
+}
+```
