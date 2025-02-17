@@ -8,7 +8,7 @@ Reference: [OSTEP](https://pages.cs.wisc.edu/~remzi/OSTEP/), [Github](https://gi
 
 Processes is one of the most fundamental abstraction OS provides. A process is defined as a **running program**.
 
-We often need to run **multiple programs**, and processes aim to provide the illusion of many CPUs by running one process, the stopping it and running another, and so forth. This basic technique is known as time sharing.
+We often need to run **multiple programs**, and processes aim to provide the illusion of many CPUs by running one process, the stopping it and running another, and so forth. This basic technique is known as time sharing (see more in the [next chapter]()).
 
 The counter part of this time sharing is space sharing where a resource is divided in space. For example, disk and storage is naturally a space shared resource.
 
