@@ -12,7 +12,7 @@ Each draw is independent and the outcomes have equal probabilities. We stop draw
 
 ![](./new_21_game_prob.png)
 ## Base Recursive Solution
-Our solution is bounded by $$k$$, once the current score exceeds $$k$$, we will not take additional cards. If the current score is less or equal to $$n$$, we will return $$1$$, else, we will return 0.
+First, we should consider what's a valid score. A score is valid if it's less than $$n$$. If a score is smaller than $$k$$, we continue drawing until it's larger than or equal $$k$$. Hence, a score should be counted towards the probability if $$ k \leq score \leq n$$.
 ```go
 if curr >= k {
 	if curr <= n {
@@ -22,9 +22,9 @@ if curr >= k {
 }
 ```
 
-If the score is not larger than $$k$$, we need to draw more cards and expand the tree. The decision tree has a branching factor of $$max$$. The probability of drawing the next card is current probability / max.
+If the score is not larger than $$k$$, we need to draw more cards and expand the tree. The decision tree has a branching factor of $$max$$.
 
-Once we have explored all the children at a node, we can sum their probabilities up. This sum is the probability of getting a score less than $$n$$ **if we chose this node, at the current level**, as shown by the code and diagram below.
+Once we have explored all the children at a node, we can sum their probabilities up. This sum is the probability of getting a score less than $$n$$ **if we started drawing cards this node, at the current level**, as shown by the code and diagram below.
 
 ```go
 childProbSum := 0

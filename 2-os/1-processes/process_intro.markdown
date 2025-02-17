@@ -68,7 +68,7 @@ It appears odd why the action of creating a process is split into two APIs - for
 
 Turns out, the separation of these APIs is essential in building the `UNIX` shell as it allows some code to be executed *after* `fork()` and *before* `exec()`. This post-fork-pre-exec code can alter the environment of the new program, enabling a variety of features.
 
-The [[Shell]] is just a user program - it allows users to type input into it. Most of the time, the shell will figure out where in the file system the executable resides, then uses `fork()` to create a new child process to run this command, and calls `exec()` to run the command, and waits for the process to complete with `wait()` (of course this is an over-simplification, but it is a core part to a shell process).
+The Shell is just a user program - it allows users to type input into it. Most of the time, the shell will figure out where in the file system the executable resides, then uses `fork()` to create a new child process to run this command, and calls `exec()` to run the command, and waits for the process to complete with `wait()` (of course this is an over-simplification, but it is a core part to a shell process).
 
 When the child completes, the shell returns from `wait()` and prints out a prompt, ready for the next command. Take the following command as example
 ```
