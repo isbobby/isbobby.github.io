@@ -62,10 +62,6 @@ struct proc {
 }
 ```
 
-## More on Process APIs
-- TOC
-{:toc}
-
 ## Shell - process APIs in action
 It appears odd why the action of creating a process is split into two APIs - fork and exec (instead of a single `create(executable)`).
 
