@@ -61,3 +61,37 @@ struct proc {
 	struct trapframe *tf;
 }
 ```
+
+## More on Process APIs
+{:toc}
+
+## Shell - process APIs in action
+It appears odd why the action of creating a process is split into two APIs - fork and exec (instead of a single `create(executable)`).
+
+Turns out, the separation of these APIs is essential in building the `UNIX` shell as it allows some code to be executed *after* `fork()` and *before* `exec()`. This post-fork-pre-exec code can alter the environment of the new program, enabling a variety of features.
+
+The [[Shell]] is just a user program - it allows users to type input into it. Most of the time, the shell will figure out where in the file system the executable resides, then uses `fork()` to create a new child process to run this command, and calls `exec()` to run the command, and waits for the process to complete with `wait()` (of course this is an over-simplification, but it is a core part to a shell process).
+
+When the child completes, the shell returns from `wait()` and prints out a prompt, ready for the next command. Take the following command as example
+```
+$ wc p3.c > newfile.txt
+```
+
+If we execute the above, the output from `wc` gets written into our `newfile.txt`. The shell does this by first creating a child with `fork()`, and before calling `exec()` for `wc`, closes the standard output and opens the file `newfile.txt` such that outputs are written to the file instead.
+
+We can implement the above behaviour with the following
+```c
+// after fork
+int rc = fork();
+if (rc == 0) {
+	close(STDOUT_FILENO);
+	open("./output.txt", O_CREATE|O_WRONLY|O_TRUNC,S_IRWXU);
+	char *myargs[3];
+	execvp(myargs[0], myargs);
+}
+```
+
+In the above snippet, by closing `STDOUT_FILENO`, then immediately `open`, the next call to `open()` assigns `1` to `output.txt`, as a result, any program executed after this will write its standard output to `output.txt` instead of the terminal.
+
+## Advanced topics
+The above just documents a small part of process APIs, and does not cover the rich **signal** infrastructure and system. In addition, some system researches also identified problems with the `fork + exec` approach and advocates for simpler API such as `spawn` - read widely to also take in opinions from other experts.
