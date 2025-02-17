@@ -21,11 +21,12 @@ Finally, programs often access persistent **storage devices**, these devices lik
 
 ## Process APIs
 On a high level, the OS should provide these APIs in its interface for managing processes
-1. **create** (see [`fork`](https://isbobby.github.io/2-os/1-processes/apis/process_api_fork.html))
+1. **create** - see [`fork`](https://isbobby.github.io/2-os/1-processes/apis/1-process_api_fork.html), technically a *copy*
 2. **destroy**
-3. **wait** - wait for a process to stop running, see ([`wait`](https://isbobby.github.io/2-os/1-processes/apis/process_api_wait.html))
-4. **misc control** - for example, suspend and resume
-5. **status** - to retrieve status information about a process
+3. **wait** - wait for a process to stop running, see [`wait`](https://isbobby.github.io/2-os/1-processes/apis/2-process_api_wait.html)
+4. **exec** - execute a specified command or executable, see ([`exec`](https://isbobby.github.io/2-os/1-processes/apis/3-process_api_exec.html))
+5. **misc control** - for example, suspend and resume
+6. **status** - to retrieve status information about a process
 
 **More on process creation**
 The OS has to load process code and any related static data into the process's address space in the memory. Programs initially reside on **disk** or other persistent storages, in some kind of executable format.
