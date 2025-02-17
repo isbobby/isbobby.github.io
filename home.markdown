@@ -7,7 +7,9 @@ permalink: /
 # Computer Science and More
 A strong foundation in computer science is crucial for success in the field.
 
-This blog is inspired by [teachyourselfcs.com](https://teachyourselfcs.com/), and also some quotes that get thrown around too often:
+This blog is inspired by [teachyourselfcs.com](https://teachyourselfcs.com/), 
+
+it is also inspired by some quotes that are thrown around too often:
 
 > Albert Einstein — "If you can't explain it simply, you don't understand it well enough," 
 
