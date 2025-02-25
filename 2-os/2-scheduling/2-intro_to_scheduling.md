@@ -26,8 +26,8 @@ This turnaround time is a **performance** metric. Another metric of interest for
 ## Algorithm 1 - FIFO
 The most basic scheduler algorithm, we execute workload by the order of their arrival. It works well given our simple assumptions.
 
-Supposed we have three jobs arriving at the same time $$t=0$$, and each job takes 10 seconds to complete, the average turnaround time would be just $${{10+20+30}\over3}=20s$$.
+Supposed we have three jobs arriving at the same time $$t=0$$, and each job takes 10 seconds to complete, the average turnaround time would be just $$sum(10+20+30)/3=20s$$.
 
-Now, if we relax assumption 1, where jobs have different runtime, and if job A runs for 100s, the average turnaround becomes $${{100+110+120}\over3}=110s$$. Although job B and C have the same runtime, their turnaround gets degraded. This is referred to as the **convoy effect**, where a number of shorter workloads gets queued behind a large workload.
+Now, if we relax assumption 1, where jobs have different runtime, and if job A runs for 100s, the average turnaround becomes $$sum(100+110+120)/3=110s$$. Although job B and C have the same runtime, their turnaround gets degraded. This is referred to as the **convoy effect**, where a number of shorter workloads gets queued behind a large workload.
 
 
