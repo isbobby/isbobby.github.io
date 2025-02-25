@@ -19,7 +19,7 @@ Here, we represent all processes running as **workload**. We start with the most
 ## Scheduling Metrics
 We want a set of metrics to compare different scheduling policies - a **scheduling metric**. Like the simple assumptions, we start with just a simple metric - the **turnaround time**. This refers to the time at which the job completes, minus the time at which the job arrived in the system.
 
-$$ T_{turnaround}=T_{completion} - T_{arrival}$$
+$$T_{turnaround}=T_{completion} - T_{arrival}$$
 
 This turnaround time is a **performance** metric. Another metric of interest for scheduler is **fairness**. Performance and fairness are often at odds in scheduling.
 
