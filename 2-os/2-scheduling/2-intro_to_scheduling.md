@@ -30,4 +30,17 @@ Supposed we have three jobs arriving at the same time $$t=0$$, and each job take
 
 Now, if we relax assumption 1, where jobs have different runtime, and if job A runs for 100s, the average turnaround becomes $$sum(100+110+120)/3=110s$$. Although job B and C have the same runtime, their turnaround gets degraded. This is referred to as the **convoy effect**, where a number of shorter workloads gets queued behind a large workload.
 
+## Algorithm 2 - SJF
+The above example showcased a single large workload can degrade performance in a FIFO scheduler. If we assume the run-time of each workload before hand, we can schedule to run the shortest jobs first. For the above example, we will run the two 10s tasks, and lastly the 100s task. This gives a much quicker turnaround of $$sum(10+20+120)/3=50s$$, a more than 2x improvement of the previous FIFO. In fact, if we assume all jobs arrive at the same time and their runtime is known, SJF is the optimal scheduling policy for turnaround time.
+
+However, the optimisation this approach brings also depends on the assumption that all workloads arrive at the same time, and we can re-order the execution by starting the shortest workload first. When we relax this assumption, the following scenario also leads to a convoy problem in SJF.
+
+Instead of all 3 tasks arriving at the same time, the largest workload may arrive first. Since no other tasks have arrived, it is scheduled to execute.
+
+After 10 seconds of execution, two other 10s tasks arrive. They can't be executed as the SJF scheduler is non-preemptive. This leads to an increase in the average turnaround time to $$sum(100+110-10+120-10)=103.33s$$.
+
+## Algorithm 3 - STCF
+The above concern can be addressed with the help of context switching and preemptive scheduling. Once the shorter tasks arrive, it can preempt the currently running job to run another job. The job to schedule will have the **shortest time to complete**, hence the name of this scheduling policy - shortest time to complete first.
+
+With this, the above problem results in a shorter turnaround time to $$sum(120+20-10+30-10)=50s$$.
 
