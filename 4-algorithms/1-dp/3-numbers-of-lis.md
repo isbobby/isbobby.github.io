@@ -1,5 +1,5 @@
 ---
-title: Uncrossed Lines
+title: Number of Longest Increasing Sub-Sequence
 parent: Dynamic Programming
 nav_order: 3
 ---
@@ -30,4 +30,24 @@ dp  = [1, 1,1,2,2,3,4  ,_] // at 101, 7 is smaller
 dp  = [1, 1,1,2,2,3,4  ,4] // at 18, 7 is smaller
 ```
 
+The code is simple with DP. We can further optimise the solution from $$O(N^2)$$ to $$O(N log(N))$$ with binary search, but that's another approach.
+```go
+func lengthOfLIS(nums []int) int {
+    dp := make([]int, len(nums))
+    res := 1
+    for i := range nums {
+        dp[i] = 1
+        
+        for j := 0; j < i; j ++ {
+            if nums[i] > nums[j] {
+                dp[i] = max(dp[i], dp[j]+1)
+                res = max(res, dp[i])
+            }
+        }
+    }
+    return res
+}
+```
+
 # Number of LIS
+
