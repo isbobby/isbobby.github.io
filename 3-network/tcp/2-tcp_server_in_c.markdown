@@ -1,6 +1,6 @@
 ---
 title: TCP Part 1 - Writing a server in C
-parent: Computer Network
+parent: TCP
 nav_order: 2
 ---
 # Writing a TCP server in C

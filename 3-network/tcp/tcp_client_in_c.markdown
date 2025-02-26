@@ -1,6 +1,6 @@
 ---
 title: TCP Part 2 - Writing a client in C
-parent: Computer Network
+parent: TCP
 nav_order: 3
 ---
 # Part 2 - TCP Client

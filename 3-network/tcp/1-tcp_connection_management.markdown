@@ -1,16 +1,15 @@
 ---
-title: TCP Connection Management
-parent: Computer Network
+title: Ports and Sockets
+parent: TCP
 nav_order: 1
 ---
-# TCP Connection Management
+# Ports and Sockets
+Ports and sockets are important concepts to TCP connection management.
+
 References:
 - [Microchip's introduction to TCP/IP](https://developerhelp.microchip.com/xwiki/bin/view/applications/tcp-ip/sockets-ports/)
 - [TCP Guide](http://www.tcpipguide.com/free/t_TCPConnectionTermination-2.htm)
 - [Free BSD Guide](https://man.freebsd.org/cgi/man.cgi?query=listen&sektion=2&format=html)
-
-# Key Concepts
-Ports and sockets are important concepts to TCP connection management.
 
 ## Ports
 The IP addresses help to identify a machine on a network, and the ports help to identify the process on a machine. 

@@ -1,6 +1,6 @@
 ---
 title: TCP Part 3 - Handle concurrent connections
-parent: Computer Network
+parent: TCP
 nav_order: 4
 ---
 # Making our TCP server concurrent
