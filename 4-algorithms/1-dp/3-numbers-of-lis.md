@@ -50,4 +50,70 @@ func lengthOfLIS(nums []int) int {
 ```
 
 # Number of LIS
+Let's consider the following array `[1,3,3,5,4]`. We can use the previous approach to calculate the LIS value for each node, as shown below.
 
+![](3-base.png)
+
+From here, it is easier to formulate the bottom up logic. 
+
+If a previous number is smaller, we can consider the LIS starting from this previous number - by updating the **LIS length**. 
+
+In addition, we also need to track cases where the **LIS length is the same** with an `previousLisLen + 1 == currMaxLisLen` condition. 
+
+Compare the following with the LIS solution above to see the differences.
+
+```go
+currMaxLisLen := 1
+currLisCount := 1
+
+// we can consider incrementing LIS
+if previousNumber < currNumber {
+	// update LIS if the IS starting from this number is largest
+	if previousLisLen + 1 < currMaxLisLen {
+		currMaxLisLen = previousLisLen + 1
+		currLisCount = previousLisCount
+	
+	// add to number of LIS count if the length is the same
+	} else if previousLisLen + 1 == currMaxLisLen {
+		currLisCount += 1
+	}
+}	
+```
+Running this through all elements we have computed will yield the following result
+
+![](3-with_num_lis_array.png)
+
+However, this is not the completed result yet. This is because we can generate a total of **4** increasing subsequences of length 3 (`{1,3,5},{1,3,5},{1,3,4},{1,3,4}` there are two 3s). 
+
+We can compute the final result with one pass to sum up LIS count of the maximum length. This gives us the final solution. I used a `[2]int{}` to represent the DP solution at `i`, but using a `type LIS struct` could make the code readable.
+
+```go
+func findNumberOfLIS(nums []int) int {
+	dp := make([][2]int, len(nums)) // [0] represents max LIS len, [1] represents LIS count
+	for i := 0; i < len(nums); i++ {
+		dp[i] = [2]int{1, 1}
+		for j := 0; j < i; j++ {
+			if nums[j] < nums[i] {
+				if dp[i][0] < dp[j][0]+1 { // if LIS from j is longer
+					dp[i][0] = dp[j][0] + 1
+					dp[i][1] = dp[j][1]
+				} else if dp[i][0] == dp[j][0]+1 { // if LIS from j has same length
+					dp[i][1] += dp[j][1]
+				}
+			}
+		}
+	}
+
+	longest := 0
+	res := 0
+	for _, lis := range dp {
+		if lis[0] > longest {
+			longest = lis[0]
+			res = lis[1]
+		} else if lis[0] == longest {
+			res += lis[1]
+		}
+	}
+	return res
+}
+```
