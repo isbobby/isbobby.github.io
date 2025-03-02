@@ -3,8 +3,10 @@ title: Number of Longest Increasing Sub-Sequence
 parent: Dynamic Programming
 nav_order: 3
 ---
-### Number of Longest Increasing Sub-Sequence ([Link](https://leetcode.com/problems/number-of-longest-increasing-subsequence))
-# Warm up with LIS
+# Number of Longest Increasing Sub-Sequence ([Link](https://leetcode.com/problems/number-of-longest-increasing-subsequence))
+**Topics**: array, sort, DP
+
+## Warm up with LIS
 We can review the question *Longest Increasing Sub-Sequence* as a warm up.
 
 Given an integer array, we want to find the length of the longest increasing subsequence ([link](https://leetcode.com/problems/longest-increasing-subsequence/description/)).

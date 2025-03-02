@@ -4,6 +4,8 @@ parent: Dynamic Programming
 nav_order: 4
 ---
 # Unique Binary Search Tree
+**Topics**: tree, DFS, DP
+
 This cateogry of problems revolves around the BST property that the same numerical array can be represented by BSTs of different structures (reminds me of high school organic chemistry, isomerism?).
 
 For example, the array `arr=[1,2,3]` can be represented by these 5 structural unique binary search trees.
