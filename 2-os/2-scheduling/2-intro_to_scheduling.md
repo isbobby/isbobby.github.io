@@ -28,7 +28,13 @@ The most basic scheduler algorithm, we execute workload by the order of their ar
 
 Supposed we have three jobs arriving at the same time $$t=0$$, and each job takes 10 seconds to complete, the average turnaround time would be just $$sum(10+20+30)/3=20s$$.
 
-Now, if we relax assumption 1, where jobs have different runtime, and if job A runs for 100s, the average turnaround becomes $$sum(100+110+120)/3=110s$$. Although job B and C have the same runtime, their turnaround gets degraded. This is referred to as the **convoy effect**, where a number of shorter workloads gets queued behind a large workload.
+![](2-schedule_fifo_1.png)
+
+Now, if we relax assumption 1, where jobs have different runtime, and if job A runs for 100s, the average turnaround becomes $$sum(100+110+120)/3=110s$$. 
+
+![](2-schedule_fifo_2.png)
+
+Although job B and C have the same runtime, their turnaround gets degraded. This is referred to as the **convoy effect**, where a number of shorter workloads gets queued behind a large workload.
 
 ## Algorithm 2 - SJF
 The above example showcased a single large workload can degrade performance in a FIFO scheduler. If we assume the run-time of each workload before hand, we can schedule to run the shortest jobs first. For the above example, we will run the two 10s tasks, and lastly the 100s task. This gives a much quicker turnaround of $$sum(10+20+120)/3=50s$$, a more than 2x improvement of the previous FIFO. In fact, if we assume all jobs arrive at the same time and their runtime is known, SJF is the optimal scheduling policy for turnaround time.
