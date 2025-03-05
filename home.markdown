@@ -17,7 +17,7 @@ This blog is also inspired by some quotes that are thrown around too often:
 
 In fact, the second statement is much more true when it comes to software engineering (not CS), as translating theoretical knowledge to working code is a skill all good engineers must have.
 
-Hence, this blog aims to explain CS concepts and problems, and document the process of building solutions around these concepts and problems.
+Hence, this blog aims to explain CS concepts and problems, and document the process of building solutions around these concepts and problems, starting from Jan 2025.
 
 # Main Areas of Study
 ### [Operating System](https://isbobby.github.io/2-os/)
