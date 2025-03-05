@@ -15,6 +15,8 @@ it is also inspired by some quotes that are thrown around too often:
 
 > Richard Feynman — 'What I cannot build. I do not understand.'
 
+In fact, the second statement is much more accurate when it comes to software engineering (not CS), as translating theoretical knowledge to working code is a skill all good engineers must have.
+
 Hence, this blog aims to explain CS concepts and problems, and document the process of building solutions around these concepts and problems.
 
 # Main Areas of Study
