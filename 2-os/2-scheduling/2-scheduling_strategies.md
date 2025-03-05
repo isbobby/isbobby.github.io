@@ -27,7 +27,7 @@ This turnaround time is a **performance** metric. Another metric of interest for
 ## Algorithm 1 - FIFO
 The simplest scheduling algorithm, simply schedule whichever task is read from input first. This can have very bad turnaround time if a long running task blocks the queue.
 
-See [FIFO Scheduling](https://isbobby.github.io/2-os/2-scheduling/2-intro_to_scheduling/2-fifo.html) for more explanation and implementation.
+See [FIFO Scheduling](https://isbobby.github.io/2-os/2-scheduling/2-1-scheduling-strats/2-fifo.html) for more explanation and implementation.
 
 ## Algorithm 2 - SJF
 The above example showcased a single large workload can degrade performance in a FIFO scheduler. If we assume the run-time of each workload before hand, we can schedule to run the shortest jobs first. For the above example, we will run the two 10s tasks, and lastly the 100s task. This gives a much quicker turnaround of $$sum(10+20+120)/3=50s$$, a more than 2x improvement of the previous FIFO. In fact, if we assume all jobs arrive at the same time and their runtime is known, SJF is the optimal scheduling policy for turnaround time.
