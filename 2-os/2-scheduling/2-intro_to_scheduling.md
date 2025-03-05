@@ -1,7 +1,8 @@
 ---
-title: Introduction to Scheduling
+title: Scheduling Strategies
 parent: CPU Scheduling
 nav_order: 2
+has_toc: false
 ---
 # Introduction
 Scheduling predates computer systems, early approaches were taken from fields like operation management.
@@ -24,17 +25,9 @@ $$T_{turnaround}=T_{completion} - T_{arrival}$$
 This turnaround time is a **performance** metric. Another metric of interest for scheduler is **fairness**. Performance and fairness are often at odds in scheduling.
 
 ## Algorithm 1 - FIFO
-The most basic scheduler algorithm, we execute workload by the order of their arrival. It works well given our simple assumptions.
+The simplest scheduling algorithm, simply schedule whichever task is read from input first. This can have very bad turnaround time if a long running task blocks the queue.
 
-Supposed we have three jobs arriving at the same time $$t=0$$, and each job takes 10 seconds to complete, the average turnaround time would be just $$sum(10+20+30)/3=20s$$.
-
-![](2-schedule_fifo_1.png)
-
-Now, if we relax assumption 1, where jobs have different runtime, and if job A runs for 100s, the average turnaround becomes $$sum(100+110+120)/3=110s$$. 
-
-![](2-schedule_fifo_2.png)
-
-Although job B and C have the same runtime, their turnaround gets degraded. This is referred to as the **convoy effect**, where a number of shorter workloads gets queued behind a large workload.
+See [FIFO Scheduling](https://isbobby.github.io/2-os/2-scheduling/2-intro_to_scheduling/2-fifo.html) for more explanation and implementation.
 
 ## Algorithm 2 - SJF
 The above example showcased a single large workload can degrade performance in a FIFO scheduler. If we assume the run-time of each workload before hand, we can schedule to run the shortest jobs first. For the above example, we will run the two 10s tasks, and lastly the 100s task. This gives a much quicker turnaround of $$sum(10+20+120)/3=50s$$, a more than 2x improvement of the previous FIFO. In fact, if we assume all jobs arrive at the same time and their runtime is known, SJF is the optimal scheduling policy for turnaround time.
@@ -49,4 +42,3 @@ After 10 seconds of execution, two other 10s tasks arrive. They can't be execute
 The above concern can be addressed with the help of context switching and preemptive scheduling. Once the shorter tasks arrive, it can preempt the currently running job to run another job. The job to schedule will have the **shortest time to complete**, hence the name of this scheduling policy - shortest time to complete first.
 
 With this, the above problem results in a shorter turnaround time to $$sum(120+20-10+30-10)=50s$$.
-
