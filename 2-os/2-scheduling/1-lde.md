@@ -67,5 +67,11 @@ If the decision is to switch, the **context switch** code is executed, where the
 ![](timer_interrupt.png)
 ## Concurrency
 As we expect interrupts to be random events - how to we handle two interrupts are sent at the same time? One simple technique OS might do is to **disable interrupt** during interrupt processing. OS may also employ more sophisticated **locking** to protect concurrent access to internal data structures. More details are discussed in the concurrency chapter.
-## Hands-On
-(WIP)
+
+## Conclusion
+Limited direct execution is an approach to address the following issues
+
+1. placing a sensible limit on what a user program can do
+2. providing a mechanism for processor to regain control of the processor
+
+This is done by the provision of `syscalls` and translating into `TRAP` instructions. For time sharing and swapping out a task when its time slice is up, we rely on hardware `interrupt` and the corresponding `interrupt service routine`.
