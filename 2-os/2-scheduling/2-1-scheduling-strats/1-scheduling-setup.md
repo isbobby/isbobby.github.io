@@ -4,7 +4,7 @@ parent: Scheduling Strategies
 nav_order: 1
 ---
 # Introduction
-The best way to understand how scheduler works is to implement our own scheduler and processor simulation ([Source Code On Github](https://github.com/isbobby/system-programming/tree/main/go/os/scheduling))!.
+The best way to understand how scheduler works is to implement our own scheduler and processor simulation ([Source Code On Github](https://github.com/isbobby/system-programming/tree/main/go/os/scheduling)).
 
 The following details my attempt to implement scheduler simulation with three components
 1. Input Stream - represents IO
