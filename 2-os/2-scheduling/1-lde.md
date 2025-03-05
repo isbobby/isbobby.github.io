@@ -3,7 +3,7 @@ title: Limited Direct Execution
 parent: CPU Scheduling
 nav_order: 1
 ---
-# Introduction
+# Limited direct execution (LDE)
 Before diving into defining what the term means, we need to be familiar with how a process gets executed on the CPU, and what are the problems when we attempt to implement **time sharing** between different processes.
 
 If we assume there's only one process, a naive technique would be just a *direct execution*, where we run the program directly on the CPU. The OS may perform the following
