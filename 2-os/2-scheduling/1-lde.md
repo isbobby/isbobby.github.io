@@ -44,6 +44,7 @@ In the above simple model of direct execution, the process is running on the CPU
 There are two approaches in doing so
 1. cooperative - leaving the process to initiate system call to swap itself out
 2. non-cooperative - OS takes control to swap
+
 ### Cooperative - process self swap
 With this approach, the OS entrusts the process to be self aware that it's running for too long, and periodically give up the CPU so that OS can be executed on the CPU, and decide which task to run next.
 
