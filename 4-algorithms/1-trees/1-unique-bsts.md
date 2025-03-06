@@ -1,7 +1,7 @@
 ---
 title: Unique Binary Search Trees Questions
-parent: Dynamic Programming
-nav_order: 4
+parent: Trees and Graphs
+nav_order: 1
 ---
 # Unique Binary Search Tree
 **Topics**: tree, DFS, DP

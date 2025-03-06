@@ -1,7 +1,7 @@
 ---
 title: Dynamic Programming
 parent: Data Structure & Algorithms
-nav_order: 1
+nav_order: 2
 ---
 # Dynamic Programming
 Dynamic programming is a **mathematical optimisation**, and a **algorithmic paradigm**.
