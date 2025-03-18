@@ -54,7 +54,7 @@ With response time in mind, we can propose a new scheduling algorithm - round ro
 
 The idea is simple, instead of running a task to completion, we run the job for a fixed time slice, and then switch the job out and run the next job in the run queue. This process is repeated until the entire queue is empty. For this reason, round robin scheduling is also called **time-slicing**.
 
-> **[[Amortisation]] to reduce cost** - it is used in systems where there is a fixed cost to some action, and by performing the action less often, the total system cost is reduced. For example, if task switching requires `1ms`, and the time slice is set to `10ms`, the overhead is about 10%. However, if we increase the time slice to `100ms`, less than `1%` time is spent on task switching.
+> **Amortisation to reduce cost** - it is used in systems where there is a fixed cost to some action, and by performing the action less often, the total system cost is reduced. For example, if task switching requires `1ms`, and the time slice is set to `10ms`, the overhead is about 10%. However, if we increase the time slice to `100ms`, less than `1%` time is spent on task switching.
 
 Based on the above point, the length of time slice is critical for RR. The shorter the time slice, the better performance of RR under the response time metric. But making it too short introduces much more overhead due to more frequent task switching. We cannot have a time slice that's too long, as it will render the system less responsive.
 
