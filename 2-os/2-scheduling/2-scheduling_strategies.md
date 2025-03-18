@@ -42,3 +42,34 @@ After 10 seconds of execution, two other 10s tasks arrive. They can't be execute
 The above concern can be addressed with the help of context switching and preemptive scheduling. Once the shorter tasks arrive, it can preempt the currently running job to run another job. The job to schedule will have the **shortest time to complete**, hence the name of this scheduling policy - shortest time to complete first.
 
 With this, the above problem results in a shorter turnaround time to $$sum(120+20-10+30-10)=50s$$.
+
+## Scheduling Metric - Response Time
+Besides turn around time, response time is also an important metric as it measures the **perceived responsiveness** of a system.
+$$ T_{response} = T_{firstrun} - T_{arrival} $$
+The above schedulers can have good turnaround time, but they are insensitive to response time.
+
+
+## Algorithm 4 - Round Robin
+With response time in mind, we can propose a new scheduling algorithm - round robin.
+
+The idea is simple, instead of running a task to completion, we run the job for a fixed time slice, and then switch the job out and run the next job in the run queue. This process is repeated until the entire queue is empty. For this reason, round robin scheduling is also called **time-slicing**.
+
+> **[[Amortisation]] to reduce cost** - it is used in systems where there is a fixed cost to some action, and by performing the action less often, the total system cost is reduced. For example, if task switching requires `1ms`, and the time slice is set to `10ms`, the overhead is about 10%. However, if we increase the time slice to `100ms`, less than `1%` time is spent on task switching.
+
+Based on the above point, the length of time slice is critical for RR. The shorter the time slice, the better performance of RR under the response time metric. But making it too short introduces much more overhead due to more frequent task switching. We cannot have a time slice that's too long, as it will render the system less responsive.
+
+While RR optimises response time, it does not perform well for turn around time. Because turnaround time only cares about when job completes, RR is nearly pessimal, even worse than FIFO in some cases.
+
+More generally, a fair scheduling algorithm will perform worse at turnaround time. This is a trade off as if we are being unfair and run shortest jobs first, then we optimise for response time, being fair loses this opportunity.
+
+Now we have two categories of scheduling algorithm - SJF and STCF to optimise turnaround time, and RR to optimise response time. Next, we have two remaining assumptions - jobs do not do IO and run-time of job is known. We shall see how relaxation of these constraints affect our scheduling.
+
+## New Problem 1 - Introducing IO
+Since all programs perform IO, we must relax the assumptions that no IO takes place. This introduces one more problem for the scheduler - as a job using IO will not be using the CPU to do any work, and remains so until the IO completes. If the same task remains in the CPU, much CPU time is wasted. Hence, the scheduler should schedule another job on the CPU at the time.
+
+One way to model the above is to use the IO windows as partition to divide a job into smaller sub-jobs. This allows for overlap, where the CPU can be used by other processes if one task is blocked on IO.
+
+## New Problem 2 - Unknown Runtime
+The above scheduling algorithms (especially SJT, STCF) assumes the scheduler know the time to run each job in advance - this is very different from reality.
+
+Hence, this gives rise to Multi-level Feedback Queue, a scheduling mechanism which allows us to predict the future with the recent past.
