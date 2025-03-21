@@ -1,5 +1,5 @@
 ---
-title: Databases - Data Storage and Retrieval
+title: Databases
 nav_order: 5
 ---
 # Databases
