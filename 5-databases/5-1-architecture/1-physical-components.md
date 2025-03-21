@@ -1,5 +1,5 @@
 ---
-title: Physical Storage Medias
+title: Physical Storage Media
 parent: Database Architecture
 nav_order: 1
 ---
