@@ -1,6 +1,6 @@
 ---
 title: Scheduling Simulation
-parent: Scheduling Strategies
+parent: Basic Scheduling Strategies
 nav_order: 1
 ---
 # Introduction

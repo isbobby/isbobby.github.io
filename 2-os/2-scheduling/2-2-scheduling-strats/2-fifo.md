@@ -1,6 +1,6 @@
 ---
 title: FIFO Scheduling
-parent: Scheduling Strategies
+parent: Basic Scheduling Strategies
 nav_order: 2
 ---
 # FIFO Scheduling

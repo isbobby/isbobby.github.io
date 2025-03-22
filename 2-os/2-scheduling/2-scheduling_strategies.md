@@ -1,5 +1,5 @@
 ---
-title: Scheduling Strategies
+title: Basic Scheduling Strategies
 parent: CPU Scheduling
 nav_order: 2
 has_toc: false
