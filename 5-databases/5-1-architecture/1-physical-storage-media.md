@@ -23,6 +23,7 @@ To read or write data from memory, we can simply read from or write to a memory 
 To understand the performance properties of a disk, we need to first understand the physical construction and mechanism.
 
 ![](1-disk_structure.png)
+
 With reference from the above [diagram](https://www.cs.uic.edu/~jbell/CourseNotes/OperatingSystems/10_MassStorage.html):
 1. Disks are made up of platters and heads to do read and write
 2. These platters can rotate, so the heads can read / write different sectors on the platter
@@ -62,11 +63,13 @@ As an analogy and ease of understanding, let's assume reading data from CPU take
 If the data sits on SSD, the process will take around `1.5` days, around `100,000` times slower than reading from registers.
 
 Lastly, if the data sits in magnetic drive HDD, it takes `1.5` months to read the data.
+
 ### Cost
 The reason why HDD is still so widely used today is because of its cost efficiency. We will see as soon as we compare their cost per `TB` of data.
 1. RAM is the most expensive, coming at 2000 - 5000 USD per TB (2025 price).
 2. SSD is much more efficient, with around 30 - 100 USD per TB.
 3. HDD is the most cost efficient, costing only 10 - 30 USD per TB.
+
 ### Storage Pragmatics & Trends
 Actually, many significant databases are not very big! They are in the range of hundreds of GBs.
 
