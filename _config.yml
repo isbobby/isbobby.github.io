@@ -32,6 +32,13 @@ remote_theme: just-the-docs/just-the-docs@v0.10.0
 plugins:
   - jekyll-feed
 
+# External navigation links
+nav_external_links:
+  - title: repoistory on Github
+    url: https://github.com/isbobby/isbobby.github.io
+    hide_icon: false # set to true to hide the external link icon - defaults to false
+    opens_in_new_tab: false # set to true to open this link in a new tab - defaults to false
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
