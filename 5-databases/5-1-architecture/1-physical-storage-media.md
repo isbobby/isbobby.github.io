@@ -38,19 +38,13 @@ This also makes the steps to read / write data quite clear
 Note that step 3 cannot be optimised, hence, we need to focus on minimising / eliminating seek time and rotational delay.
 
 ## Solid-State Drive
-Flash memories can be combined to form solid state drives.
+Flash memories can be combined to form solid state drives. We will take a brief look at NAND flash.
 
-NAND Flash : fine grain reads (as compared to page), coarse grain writes! asymmetrical
+NAND Flash provides finer grain reads of `4-8kbs` but coarse grain writes of `1-2MB`. The read and write granularity is asymmetrical. A flash can also only be written 2-3 thousand times before failure, moving write hot spots around is crucial in preserving hardware health.
 
-Only 2k/3k erasures before failure - we cannot keep writing to the same cell and load balance the writes over the SSD
+Because the write granularity is so large, we need to write big units even if we want to just write a small piece of data.
 
-Write amplification - we need to write big units even if we want to just write a small thing, need to reorganise for wear and garbage collection.
-
-Bottom line - read is fast, random read is also fast, sequential read is only slightly faster (differs from magnetic disks)
-
-Write is slow for both random and sequential writes.
-
-Flash is faster than disk, up to 10 times the bandwidth of an ideal hard disk. In fact, SSD can out perform even more for non-sequential read.
+As compared to magnetic disk, SSD reads are faster for sequential and random reads. Write is slow for both random and sequential writes.
 
 Locality matters for flash as well - magnetic disk needs to rotate to the right data location, whereas in flash, writing to two blocks far away from each other can trigger double write amplification.
 
