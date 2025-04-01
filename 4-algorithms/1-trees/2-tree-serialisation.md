@@ -60,17 +60,22 @@ We can see the improvement in space usage, for a skewed tree, we need much less 
 ![](2-pre-order.png)
 
 ### Deserialising
-After a tree is serialised, we also need a function to reconstruct the tree into the original representation with `TreeNode`.
+After a tree is serialised, we also need a function to reconstruct the tree into the original representation with `TreeNode`s.
 
-Pre-order walk will visit the root of a subtree first, so the head of an array will be the root of the current subtree, and the remaining array will form its left and right children.
+Pre-order walk will visit the root of a subtree first. Therefore, the first element of a pre-order array will be the root of the current subtree, and the remaining elements of the array will form its left and right children.
 
 ![](2-pre-order-des-base.png)
 
-After visiting the root, pre-order visits the left child. Hence, we know that the first element of the remaining array must be the root of the left subtree. If it's marked as `null`, we can return early. This happens as the left child of `2` is null.
+In the above example, we can determine the root will be `1`.
 
-According to how we do pre-order walk, we will finally visit the right node, and therefore `2` can use the "left over" array to build its right subtree.
+After visiting the root, pre-order walk will visit the left child. Hence, we know that the first element of the remaining array must be the root of the left subtree, which is `2` in this case.
 
 ![](2-pre-order-return.png)
+
+With reference to the diagram above, we then enter a recursive case where `2` is the root of the subtree. The next element in the array happens to be `n` - this suggests that the left subtree is `null`, and the elements after this forms the right subtree.
+
+The right subtree also happens to be `null`, now we know that the `2` subtree is completed. We can return whatever that's remaning (`3,4,n,n,5,n,n`) to `2`'s parent `1`, as it will form `1`'s right subtree.
+
 
 With this understanding, we can use our `Preorder` DFS function to deserialise the tree.
 ```go
