@@ -32,4 +32,5 @@ Why? They are necessary for solving complex problems, and they are fun.
 ### [Databases](https://isbobby.github.io/5-databases/)
 Data is at the heart of most programs, few understand how database systems actually work.
 
-### More coming soon...
+### Distributed Systems
+These days, most software systems are distributed systems. This distributed nature gave rise to many interesting problems and solutions.
