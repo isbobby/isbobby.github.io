@@ -8,6 +8,7 @@ has_toc: false
 As discussed in [Basic CPU Scheduling](https://isbobby.github.io/2-os/2-scheduling/2-scheduling_strategies.html), occurrence of IO and the length of execution of a job is not known to the scheduler. Although round-robin does well in achieving good response time, it has worse turn around time.
 
 We want a scheduling mechanism to optimise both response and turn around time - this gives rise to the multi-level feedback queue (MLFQ).
+
 ## Basic MLFQ Rules
 Unlike the scheduling strategies described previously, MLFQ will track jobs using multiple distinct queues. These queues represent jobs of different priority. A job can only be on one queue at a time, and more than one job can exist on a queue.
 
@@ -44,14 +45,17 @@ To address this, MLFQ will have to implement an accounting mechanism at each que
 
 Hence, we will change the following rules
 ```
-if a job uses up its time slice, it's likely compute intensive and long running, we want to decrease its priority
+if a job uses up its time slice, it's likely compute intensive and long 
+running, we want to decrease its priority
 
-if a job gives up CPU time due to IO, it's likely going to be an interactive job, we want to keep it where it is.
+if a job gives up CPU time due to IO, it's likely going to be an interactive 
+job, we want to keep it where it is.
 ```
 
 to just the following
 ```
-if a job uses up its time slice on its current level, we want to decrease its priority regardless how many times it gives up on CPU
+if a job uses up its time slice on its current level, we want to decrease 
+its priority regardless how many times it gives up on CPU
 ```
 ## MLFQ Parameters and Tuning
 The above approaches introduced some important variables to govern MLFQ behaviour.
@@ -62,6 +66,7 @@ The above approaches introduced some important variables to govern MLFQ behaviou
 Configuring these values dynamically during execution is challenging, some MLFQ uses a table to define the above values, some OS also uses formulas to deduce these variables (see decay-usage algorithm).
 
 In practice, most MLFQ reserves the highest priority for OS jobs, and a user task can never obtain the highest priority. Some systems allow user advice to set priorities, see more on command `nice` which allows user to increase and decrease a job priority.
+
 ## Summary
 MLFQ is a smart mechanism which performs prioritisation without any prior knowledge of jobs, it is governed by the following rules
 
@@ -70,4 +75,8 @@ MLFQ is a smart mechanism which performs prioritisation without any prior knowle
 3. when a job first joins MLFQ, it is assigned the highest priority
 4. if a job uses up its time slice on its current level, we want to decrease its priority
 5. after some time interval, move every job to the highest priority queue (reshuffle the system)
+
+## Implementation in Go
+[Github Repository directory](https://github.com/isbobby/system-programming/tree/main/go/os/scheduling/mlfq)
+
 
