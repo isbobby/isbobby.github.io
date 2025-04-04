@@ -25,6 +25,10 @@ Using the MLFQ concepts listed from the previous [chapter](https://isbobby.githu
 1. We will have a logical IO device to perform IO instruction
 2. This logical IO device will send ready jobs that have completed IO instructions back to MLFQ, waiting to be scheduled again
 
+**Synchronisation with clock**:
+1. A logical clock will be used to synchronise IO and CPU execution
+2. This logical clock will send a signal to components subcribed every set duration
+
 With these requirements, we can start off with 3 main components - `IO Device`,`MLFQ Scheduler`, and `Processor`. We should also include `Clock` and `Logger` to track the system time and perform structured logging.
 
 ![](1-mlfq-design_base_design.png)
