@@ -1,5 +1,5 @@
 ---
-title: I - System Clock
+title: I - System Clock & Job
 parent: Multi-level Feedback Queue
 nav_order: 2
 ---
@@ -70,5 +70,40 @@ func NewClock(delay time.Duration, subscriptions []chan<- interface{}) *Clock {
 	c.DelayPerCycle = delay
 	c.Subscriptions = subscriptions
 	return &c
+}
+```
+
+# Job
+We will also implement a `Job struct` to represent user jobs to be executed. It will contain a stack of instructions (represented with a slice). An instruction can be either `IO` or `CPU` instruction, each with different required clock cycles to complete.
+
+```go
+type Job struct {
+	ID               int
+	InstructionStack []JobInput
+}
+
+type JobInput struct {
+	Cycle int
+	Type  string
+}
+```
+
+To simulate future inputs of jobs easily, we will also include a `ScheduleTime int`, which works together with `Clock struct`. If the current `Clock.Time` is equal to the job's `ScheduleTime`, then it can be scheduled for execution.
+
+With reference to the concept of [job accounting](https://isbobby.github.io/2-os/2-scheduling/3-mlfq.html#job-accounting) in earlier chapter, we need to keep a record of the job's priority and time alloted remaning. This is to ensure fair sharing within the same priority.
+
+With the added attributes, the final `Job struct` will look like
+```go
+type Job struct {
+	ID               int
+	ScheduledTime    int
+	Priority         *int
+	InstructionStack []JobInput
+	TimeAllotment    atomic.Int32
+}
+
+type JobInput struct {
+	Cycle int
+	Type  string
 }
 ```
