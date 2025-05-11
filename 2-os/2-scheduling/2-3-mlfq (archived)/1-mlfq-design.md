@@ -1,8 +1,8 @@
----
+<!-- ---
 title: MLFQ Design (Go)
 parent: Multi-level Feedback Queue
 nav_order: 1
----
+--- -->
 # Design Requirements
 Using the MLFQ concepts listed from the previous [chapter](https://isbobby.github.io/2-os/2-scheduling/3-mlfq.html), we can start designing a MLFQ scheduler with these requirements
 

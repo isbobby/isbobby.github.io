@@ -1,8 +1,8 @@
----
+<!-- ---
 title: I - System Clock & Job
 parent: Multi-level Feedback Queue
 nav_order: 2
----
+--- -->
 # System Clock
 To synchronise the processor and IO device, we will need a system clock to send clock signals to both components at the same time.
 

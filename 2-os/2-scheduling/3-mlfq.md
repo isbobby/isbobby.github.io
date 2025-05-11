@@ -77,6 +77,5 @@ MLFQ is a smart mechanism which performs prioritisation without any prior knowle
 5. after some time interval, move every job to the highest priority queue (reshuffle the system)
 
 ## Implementation in Go
-We will convert the above concepts into a list of requirements and implement our own MLFQ. An initial design is proposed and documented in the [nested pages](https://isbobby.github.io/2-os/2-scheduling/2-3-mlfq/1-mlfq-design.html).
+We will convert the above concepts into a list of requirements and implement our own MLFQ. A design is documented and implemented in this [Github repository directory](https://github.com/isbobby/system-programming/tree/main/go/os/scheduling/mlfq).
 
-The source code is also available in this [Github repository directory](https://github.com/isbobby/system-programming/tree/main/go/os/scheduling/mlfq).
