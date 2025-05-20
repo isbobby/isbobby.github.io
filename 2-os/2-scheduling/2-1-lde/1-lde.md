@@ -35,13 +35,13 @@ System calls will be translated into the special `TRAP` instruction. When a prog
 
 This is done by setting up a **trap table** - the OS informs the hardware of the locations of **trap handlers**, the hardware stores the location of these handlers until the machine is rebooted.
 ### system calls
-We cannot allow calling program to access OS via direct addressing as it will allow malicious program to call **any code** in the OS. Instead, a **system-call number** is assigned to each system call. The OS will examine this number, ensures that' it is valid, and execute the corresponding code. This indirection serves as a protection against program invoking any OS routine by specifying the memory address.
+We cannot allow calling program to access OS via direct addressing as it will allow malicious program to call **any code** in the OS. Instead, a **system-call number** is assigned to each system call. The OS will examine this number, ensures that it is valid, and execute the corresponding code. This indirection serves as a protection against program invoking any OS routine by specifying the memory address.
 ### visualising protocol
 ![](syscall_trap.png)
 ## Problem - Process Switching
-In the above simple model of direct execution, the process is running on the CPU. As the process is the sole occupant of the CPU resource, the OS isn't running and it can't execute swap out the process. Essentially, the problem is about how can the OS regain control of the CPU.
+In the above simple model of direct execution, the process becomes the sole occupant of the CPU, which means the OS cannot execute on the CPU and swap out the process. The problem here is about letting OS regain control of the CPU.
 
-There are two approaches in doing so
+There are two ways to do it
 1. cooperative - leaving the process to initiate system call to swap itself out
 2. non-cooperative - OS takes control to swap
 
