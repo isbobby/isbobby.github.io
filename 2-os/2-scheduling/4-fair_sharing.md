@@ -5,7 +5,7 @@ nav_order: 4
 has_toc: false
 ---
 # Introduction
-The **[[Multi-level Feedback Queue]](https://isbobby.github.io/2-os/2-scheduling/3-mlfq.html)** dynamically adjusts to system behaviour, prioritising tasks that demand high responsiveness. For instance, I/O-bound tasks _(e.g., keyboard input handlers)_ retain higher priority since they frequently yield the CPU. 
+The **[Multi-level Feedback Queue](https://isbobby.github.io/2-os/2-scheduling/3-mlfq.html)** dynamically adjusts to system behaviour, prioritising tasks that demand high responsiveness. For instance, I/O-bound tasks _(e.g., keyboard input handlers)_ retain higher priority since they frequently yield the CPU. 
 
 However, CPU-bound tasks _(e.g., video rendering)_ risk **priority demotion** when they exhaust their time quantum. In workloads dominated by I/O activity, this can lead to **starvation of CPU-intensive processes**, as they may languish in lower-priority queues.
 
