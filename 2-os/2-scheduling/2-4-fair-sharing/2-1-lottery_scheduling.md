@@ -31,7 +31,7 @@ Three interface functions will be sufficient to support the basic requirement of
 This function first iterates the `sortedTaskList`  and removes the interval associated with the task. Then, all subsequent intervals are updated to keep the `sortedTaskList` sorted and compact. `maxTicketCount` will also be updated with `maxTicketCount -= removedTicketCount`.
 
 ### **`NextTask()`**
-`NextTask()` first generates a random number with `go's` random number generator with `maxTicketCount` as the inclusive ceiling. Then, the corresponding task can be located with a binary search in the `sortedTaskList` interval.
+`NextTask()` generates a random number with `go's` random number generator with `maxTicketCount` as the inclusive ceiling. Then, the corresponding task can be located with a binary search in the `sortedTaskList` interval.
 
 ### Improvements
 `RemoveTask(taskID)` will likely be a bottleneck due to its `O(N)` complexity where `N` is the number of tasks. 
