@@ -1,8 +1,8 @@
-<!-- ---
+---
 title: Lottery Scheduler
 parent: Proportional Fair Sharing Scheduling
 nav_order: 1
---- -->
+---
 # Lottery Scheduling Implementation
 ## 1 - Basic Lottery Scheduler
 First, we start off with implementing a lottery scheduler that supports
