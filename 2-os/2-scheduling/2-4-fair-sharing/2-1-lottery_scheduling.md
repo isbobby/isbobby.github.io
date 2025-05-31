@@ -38,4 +38,28 @@ This function first iterates the `sortedTaskList`  and removes the interval asso
 `NextTask()` first generates a random number with `go's` random number generator with `maxTicketCount` as the inclusive ceiling. Then, the corresponding task can be located with a binary search in the `sortedTaskList` interval.
 
 ### Improvements
-The linear `RemoveTask(taskID)` appears to be a key bottleneck. A different data structure to track the `sortedTaskList` may improve its complexity without degrading the performance of other functions (hint: tree/skip-list).
+`RemoveTask(taskID)` will likely be a bottleneck due to its `O(N)` complexity where `N` is the number of tasks. 
+
+A different data structure to track the `sortedTaskList` may improve its complexity without degrading the performance of other functions (hint: tree/skip-list).
+
+The need to adopt different internal storage implementation also exposed the tight coupling in the current code structure. The `sortedTaskList` type is a `[]intervalToTask` type, if we want to replace the underlying data structure, it requires extensive changes in all of the scheduler functions.
+```go
+type naiveLotteryScheduler struct {
+	// auto-incrementing one based task ID
+	lastId         int
+	maxTicketCount int
+	sortedTaskList []intervalToTask
+
+	// tracks the number of scheduling per task
+	scheduleAudit map[int]int
+
+	logger logger
+}
+
+type intervalToTask struct {
+	interval [2]int
+	task     Schedulable
+}
+```
+
+To remove this coupling, the `sortedTaskList` should be an `interface` which provides `Find(ticket)`, `Insert(task)`, and `Remove(task)` functions. This allows the underlying implementation to change freely without impacting the scheduler logic.
