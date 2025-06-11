@@ -58,4 +58,26 @@ type intervalToTask struct {
 }
 ```
 
-To remove this coupling, the `sortedTaskList` should be an `interface` which provides `Find(ticket)`, `Insert(task)`, and `Remove(task)` functions. This allows the underlying implementation to change freely without impacting the scheduler logic.
+To remove this coupling, the `sortedTaskList` should be an `interface` which provides `Find(ticket)`, `Insert(task)`, and `Remove(task)` functions. This allows the underlying implementation to change freely without impacting the scheduler logic ([change commit](https://github.com/isbobby/system-programming/commit/b4f73b6848d0dcb973766e13bfcb433d01351029)).
+
+```go
+type naiveLotteryScheduler struct {
+	// auto-incrementing one based task ID
+	lastId         int
+	maxTicketCount int
+
+	taskQueue TaskQueue
+
+	// tracks the number of scheduling per task
+	scheduleAudit map[int]int
+
+	logger logger
+}
+
+type TaskQueue interface {
+	AddTask(Schedulable) error
+	RemoveTask(id int) (Schedulable, error)
+	FindTask(ticket int) (Schedulable, error)
+	Tasks() []Schedulable
+}
+```
