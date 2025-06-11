@@ -1,5 +1,5 @@
 ---
-title: Memory (WIP)
+title: Memory Introduction (WIP)
 parent: Operating System
 nav_order: 3
 ---
@@ -21,3 +21,8 @@ This address space of a process contains all of the memory states of a running p
 The following is one simple way to structure a program's address space. We assume the **code** region is fixed (what about interpreted languages then?), and the **stack** and **heap** areas will change in size as the program runs. Hence, they are placed at opposite ends, and grows towards the empty region in the middle.
 
 ![](3-1-process_addr_space.svg)
+
+## TODOs 
+Explain the current OS implementation - from a process's perspective, the addresses it uses are virtual address, and mapped to a physical address
+
+Explain the goals of memory virtualisation
