@@ -7,9 +7,9 @@ permalink: /
 # Computer Science and More
 A strong foundation in computer science is crucial for success in the field. It's your own responsibility to educate and grow yourself - not your company's, not your school's.
 
-[teachyourselfcs.com](https://teachyourselfcs.com/) helped me identify the main areas of study in this blog.
+[teachyourselfcs.com](https://teachyourselfcs.com/) has helped me to identify some focus areas, which I have listed in this blog.
 
-This blog is also inspired by some quotes that are thrown around too often:
+This blog is also inspired by some popular quotes:
 
 > Albert Einstein — "If you can't explain it simply, you don't understand it well enough," 
 
