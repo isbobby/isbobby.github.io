@@ -7,7 +7,7 @@ permalink: /
 # Computer Science and More
 A strong foundation in computer science is crucial for success in the field. It's your own responsibility to educate and grow yourself - not your company's, not your school's.
 
-[teachyourselfcs.com](https://teachyourselfcs.com/) has helped me to identify some focus areas, which I have listed in this blog.
+[teachyourselfcs.com](https://teachyourselfcs.com/) has helped me to identify some key areas to focus on.
 
 This blog is also inspired by some popular quotes:
 
@@ -33,4 +33,7 @@ Why? They are necessary for solving complex problems, and they are fun.
 Data is at the heart of most programs, few understand how database systems actually work.
 
 ### Distributed Systems
-These days, most software systems are distributed systems. This distributed nature gave rise to many interesting problems and solutions.
+These days, most software systems are distributed systems.
+
+### [Site Reliability](https://isbobby.github.io/6-sre/)
+This topic has growing importance in my day job, and therefore requires its own section.
