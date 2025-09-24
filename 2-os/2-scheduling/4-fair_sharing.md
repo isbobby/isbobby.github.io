@@ -35,3 +35,5 @@ However, it does have the following drawbacks
 1. Random selection will only approach proportional fairness when there are sufficient iterations, and may be unfair in a shorter span
 2. Random selection is unpredictable
 3. Random selection only approximates proportional fairness, making it unsuitable for use cases requiring strict guarantees
+
+## Stride Scheduling
