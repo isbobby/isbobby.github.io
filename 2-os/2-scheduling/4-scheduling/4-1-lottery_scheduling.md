@@ -16,7 +16,7 @@ We will skip the following features in the basic implementation
 This implementation also does not guarantee concurrency-safty.
 
 ## Design & Implementation ([Code Link](https://github.com/isbobby/system-programming/blob/main/go/os/scheduling/lottery/naive_lottery.go))
-![](2-1-interface_1.svg)
+![](4-1-interface_1.svg)
 
 Three interface functions will be sufficient to support the basic requirement of a basic lottery scheduler. Internally, the scheduler maintains two key attributes
 1. an array `sortedTaskList` ordered by task intervals to track the tasks.
