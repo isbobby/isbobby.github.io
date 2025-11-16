@@ -78,4 +78,3 @@ MLFQ is a smart mechanism which performs prioritisation without any prior knowle
 
 ## Implementation in Go
 We will convert the above concepts into a list of requirements and implement our own MLFQ. A design is documented and implemented in this [Github repository directory](https://github.com/isbobby/system-programming/tree/main/go/os/scheduling/mlfq).
-
